@@ -1,5 +1,8 @@
 package diceGame.controller;
 
+import diceGame.model.Game;
+import diceGame.view.Console;
+
 public class App {
 public static void main(String[] args) {
   App app = new App();
@@ -7,6 +10,6 @@ public static void main(String[] args) {
 }
 
 public void run() {
-  Player player = new Player();
+  Player player = new Player(new Console(), new Game());
 }
 }
