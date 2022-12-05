@@ -13,5 +13,6 @@ public class Player {
   }
 
   public void play() {
+    console.printMenu();
   }
 }
