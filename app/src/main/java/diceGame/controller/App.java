@@ -11,5 +11,6 @@ public static void main(String[] args) {
 
 public void run() {
   Player player = new Player(new Console(), new Game());
+  player.play();
 }
 }
