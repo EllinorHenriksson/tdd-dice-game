@@ -17,4 +17,13 @@ class AppTest {
         assertEquals(expeced, actual, "The number of instantiated Player objects should be " + expeced);
     }
   }
+
+  @Test void runShouldCallPlayOnCreatedPlayer() {
+    try (MockedConstruction<Player> mock = mockConstruction(Player.class)) {
+      App sut = new App();
+      sut.run();
+      Player player = mock.constructed().get(0);
+      verify(player).play();
+    }
+  }
 }

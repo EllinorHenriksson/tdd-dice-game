@@ -11,4 +11,8 @@ public class Player {
     this.console = console;
     this.game = game;
   }
+
+  public void play() {
+    
+  }
 }
