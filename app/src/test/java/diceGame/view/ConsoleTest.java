@@ -68,7 +68,20 @@ public class ConsoleTest {
       Action expected = Action.PLAY;
       Action actual = sut.getAction();
 
-      assertEquals(expected, actual, "Should return " + expected + " for invalid input");
+      assertEquals(expected, actual, "Should return " + expected + " for input 'p'");
+    }
+  }
+
+  @Test void getActionShouldReturnQuitForInputQ() {
+    try (MockedConstruction<Scanner> mock = mockConstruction(Scanner.class)) {
+      Console sut = new Console();
+      Scanner mockedScanner = mock.constructed().get(0);
+      when(mockedScanner.nextLine()).thenReturn("q");
+
+      Action expected = Action.QUIT;
+      Action actual = sut.getAction();
+
+      assertEquals(expected, actual, "Should return " + expected + " for input 'q'");
     }
   }
 }
