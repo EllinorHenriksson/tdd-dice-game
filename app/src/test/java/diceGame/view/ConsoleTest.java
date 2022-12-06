@@ -41,6 +41,7 @@ public class ConsoleTest {
     try (MockedConstruction<Scanner> mock = mockConstruction(Scanner.class)) {
       Console sut = new Console();
       Scanner mockedScanner = mock.constructed().get(0);
+      when(mockedScanner.nextLine()).thenReturn("p");
       sut.getAction();
       verify(mockedScanner).nextLine();
     }
