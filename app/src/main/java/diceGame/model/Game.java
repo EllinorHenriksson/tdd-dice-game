@@ -6,7 +6,8 @@ public class Game {
   private Player computer;
 
   public Game() {
-
+    player = new Player();
+    computer = new Player();
   }
 
   public void newGame() {
