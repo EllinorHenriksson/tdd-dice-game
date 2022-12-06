@@ -19,6 +19,13 @@ public class Console {
 
   public Action getAction() {
     String action = scan.nextLine();
-    return null;
+
+    if (action.equals("p")) {
+      return null;
+    } else if (action.equals("q")) {
+      return null;
+    }
+
+    return Action.OTHER;
   }
 }
