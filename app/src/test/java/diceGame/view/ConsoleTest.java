@@ -27,4 +27,13 @@ public class ConsoleTest {
       assertEquals(expeced, actual, "The number of instantiated PrintStream objects should be " + expeced);
     }
   }
+
+  @Test void printMenuShouldCallPrintlnOnPrintStreamObject() {
+    try (MockedConstruction<PrintStream> mock = mockConstruction(PrintStream.class)) {
+      Console sut = new Console();
+      PrintStream mockedPrintStream = mock.constructed().get(0);
+      sut.printMenu();
+      verify(mockedPrintStream).println(anyString());
+    }
+  }
 }
