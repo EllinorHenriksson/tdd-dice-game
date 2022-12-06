@@ -13,11 +13,12 @@ public class Console {
   }
   
   public void printMenu() {
-    String text = "\nDice Game\nPlay or quit (1/0)? ";
+    String text = "\nDice Game\nPlay or quit (p/q)? ";
     print.println(text);
   }
 
   public Action getAction() {
+    String action = scan.nextLine();
     return null;
   }
 }
