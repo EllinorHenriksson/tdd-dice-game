@@ -34,4 +34,13 @@ class PlayerTest {
     sut.play();
     verify(mockedConsole, times(2)).getAction();
   }
+
+  @Test void playShouldCallNewGameForPlay() {
+    Console mockedConsole = mock(Console.class);
+    when(mockedConsole.getAction()).thenReturn(Action.PLAY, Action.QUIT);
+    Game mockedGame = mock(Game.class);
+    Player sut = new Player(mockedConsole, mockedGame);
+    sut.play();
+    verify(mockedGame).newGame();
+  }
 }
