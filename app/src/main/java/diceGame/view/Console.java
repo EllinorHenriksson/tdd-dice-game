@@ -21,7 +21,7 @@ public class Console {
     String action = scan.nextLine();
 
     if (action.equals("p")) {
-      return null;
+      return Action.PLAY;
     } else if (action.equals("q")) {
       return null;
     }
