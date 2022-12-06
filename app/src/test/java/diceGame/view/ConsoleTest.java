@@ -45,4 +45,17 @@ public class ConsoleTest {
       verify(mockedScanner).nextLine();
     }
   }
+
+  @Test void getActionShouldReturnOtherForInvalidInput() {
+    try (MockedConstruction<Scanner> mock = mockConstruction(Scanner.class)) {
+      Console sut = new Console();
+      Scanner mockedScanner = mock.constructed().get(0);
+      when(mockedScanner.nextLine()).thenReturn("x");
+
+      Action expected = Action.OTHER;
+      Action actual = sut.getAction();
+
+      assertEquals(expected, actual, "Should return " + expected + " for invalid input");
+    }
+  }
 }
