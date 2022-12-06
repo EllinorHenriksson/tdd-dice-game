@@ -21,7 +21,8 @@ class PlayerTest {
 
   @Test void playShouldCallGetActionOnConsole() {
     Console mockedConsole = mock(Console.class);
-    when(mockedConsole.getAction()).thenReturn(Action.QUIT);
+        when(mockedConsole.getAction()).thenReturn(Action.QUIT);
+
     Game mockedGame = mock(Game.class);
     Player sut = new Player(mockedConsole, mockedGame);
     sut.play();

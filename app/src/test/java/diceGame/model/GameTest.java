@@ -16,6 +16,15 @@ public class GameTest {
     }
   }
 
+  @Test void constructorShouldCreateTwoDiceObjects() {
+    try (MockedConstruction<Dice> mock = mockConstruction(Dice.class)) {
+      Game sut = new Game();
+      int expeced = 2;
+      int actual = mock.constructed().size();
+      assertEquals(expeced, actual, "The number of instantiated Dice objects should be " + expeced);
+    }
+  }
+
   @Test void newGameShouldClearScoreForPlayerAndComputer() {
     try (MockedConstruction<Player> mock = mockConstruction(Player.class)) {
       Game sut = new Game();
