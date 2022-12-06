@@ -10,6 +10,7 @@ public class Game {
   }
 
   public void newGame() {
-
+    player.clearScore();
+    computer.clearScore();
   }
 }
