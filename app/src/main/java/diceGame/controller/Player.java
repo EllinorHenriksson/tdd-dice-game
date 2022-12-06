@@ -15,5 +15,6 @@ public class Player {
 
   public void play() {
     console.printMenu();
+    Action action = console.getAction();
   }
 }
