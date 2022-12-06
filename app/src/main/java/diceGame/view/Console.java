@@ -1,5 +1,6 @@
 package diceGame.view;
 
+import java.io.PrintStream;
 import java.util.Scanner;
 
 public class Console {
@@ -10,6 +11,5 @@ public class Console {
   }
   
   public void printMenu() {
-    
   }
 }

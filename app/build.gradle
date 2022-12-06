@@ -28,7 +28,7 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass = 'diceGame.App'
+    mainClass = 'diceGame.controller.App'
 }
 
 tasks.named('test') {
