@@ -1,7 +1,6 @@
 package diceGame.model;
 
 public class Game {
-
   private Player player;
   private Player computer;
 
@@ -11,5 +10,6 @@ public class Game {
   }
 
   public void newGame() {
+
   }
 }
