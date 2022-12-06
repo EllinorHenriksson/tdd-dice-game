@@ -16,4 +16,12 @@ class PlayerTest {
     sut.play();
     verify(mockedConsole).printMenu();
   }
+
+  @Test void playShouldCallGetActionOnConsole() {
+    Console mockedConsole = mock(Console.class);
+    Game mockedGame = mock(Game.class);
+    Player sut = new Player(mockedConsole, mockedGame);
+    sut.play();
+    verify(mockedConsole).getAction();
+  }
 }

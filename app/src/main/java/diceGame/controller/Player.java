@@ -1,6 +1,7 @@
 package diceGame.controller;
 
 import diceGame.model.Game;
+import diceGame.view.Action;
 import diceGame.view.Console;
 
 public class Player {
