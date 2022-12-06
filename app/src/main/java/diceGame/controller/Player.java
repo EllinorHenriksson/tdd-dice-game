@@ -14,7 +14,13 @@ public class Player {
   }
 
   public void play() {
-    console.printMenu();
-    Action action = console.getAction();
+    Action action = null;
+
+    while (action != Action.QUIT) {
+      console.printMenu();
+      action = console.getAction();
+      if (action == Action.PLAY) {
+      }
+    }
   }
 }

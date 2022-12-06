@@ -26,9 +26,9 @@ class PlayerTest {
     verify(mockedConsole).getAction();
   }
 
-  @Test void playShouldCallGetActionTwiceForInvalidInputFollowedByValidInput() {
+  @Test void playShouldCallGetActionTwiceForPlayFollowedByQuit() {
     Console mockedConsole = mock(Console.class);
-    when(mockedConsole.getAction()).thenReturn(Action.OTHER, Action.PLAY);
+    when(mockedConsole.getAction()).thenReturn(Action.PLAY, Action.QUIT);
     Game mockedGame = mock(Game.class);
     Player sut = new Player(mockedConsole, mockedGame);
     sut.play();
