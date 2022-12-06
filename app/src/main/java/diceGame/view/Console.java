@@ -13,5 +13,7 @@ public class Console {
   }
   
   public void printMenu() {
+    String text = "\nDice Game\nPlay or quit (1/0)? ";
+    print.println(text);
   }
 }
