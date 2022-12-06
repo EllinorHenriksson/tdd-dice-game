@@ -58,4 +58,17 @@ public class ConsoleTest {
       assertEquals(expected, actual, "Should return " + expected + " for invalid input");
     }
   }
+
+  @Test void getActionShouldReturnPlayForInputP() {
+    try (MockedConstruction<Scanner> mock = mockConstruction(Scanner.class)) {
+      Console sut = new Console();
+      Scanner mockedScanner = mock.constructed().get(0);
+      when(mockedScanner.nextLine()).thenReturn("p");
+
+      Action expected = Action.PLAY;
+      Action actual = sut.getAction();
+
+      assertEquals(expected, actual, "Should return " + expected + " for invalid input");
+    }
+  }
 }
