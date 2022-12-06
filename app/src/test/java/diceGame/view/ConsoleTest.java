@@ -36,4 +36,13 @@ public class ConsoleTest {
       verify(mockedPrintStream).println(anyString());
     }
   }
+
+  @Test void getActionShouldCallNextLineOnScannerObject() {
+    try (MockedConstruction<Scanner> mock = mockConstruction(Scanner.class)) {
+      Console sut = new Console();
+      Scanner mockedScanner = mock.constructed().get(0);
+      sut.getAction();
+      verify(mockedScanner).nextLine();
+    }
+  }
 }
