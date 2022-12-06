@@ -23,7 +23,7 @@ public class Console {
     if (action.equals("p")) {
       return Action.PLAY;
     } else if (action.equals("q")) {
-      return null;
+      return Action.QUIT;
     }
 
     return Action.OTHER;
