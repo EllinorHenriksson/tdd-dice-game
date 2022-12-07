@@ -1,10 +1,11 @@
 package diceGame.controller;
 
 import diceGame.model.Game;
+import diceGame.model.Subscriber;
 import diceGame.view.Action;
 import diceGame.view.Console;
 
-public class Player {
+public class Player implements Subscriber {
   private Console console;
   private Game game;
 
@@ -24,5 +25,10 @@ public class Player {
         console.presentWinner(winner);
       }
     }
+  }
+
+  @Override
+  public void update(diceGame.model.Player player) {
+
   }
 }

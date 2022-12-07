@@ -47,4 +47,13 @@ class PlayerTest {
     verify(mockedGame).newGame();
     verify(mockedConsole).presentWinner(null);
   }
+
+  @Test void updateShouldCallPresentScoreOnConsole() {
+    Console mockedConsole = mock(Console.class);
+    Game mockedGame = mock(Game.class);
+    Player sut = new Player(mockedConsole, mockedGame);
+    diceGame.model.Player mockedPlayer = mock(diceGame.model.Player.class);
+    sut.update(mockedPlayer);
+    verify(mockedConsole).presentScore(mockedPlayer);
+  }
 }

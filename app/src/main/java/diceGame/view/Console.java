@@ -35,4 +35,7 @@ public class Console {
     String text = winner.getName() + " wins!";
     print.println(text);
   }
+
+  public void presentScore(Player player) {
+  }
 }
