@@ -93,10 +93,24 @@ public class ConsoleTest {
       Console sut = new Console();
       PrintStream mockedPrintStream = mock.constructed().get(0);
       Player winner = mock(Player.class);
-      when(winner.getName()).thenReturn("Computer");
+      
       sut.presentWinner(winner);
 
       verify(winner).getName();
+      verify(mockedPrintStream).println(anyString());
+    }
+  }
+
+  @Test void presentScoreShouldCallGetNameGetScoreAndPrintln() {
+    try (MockedConstruction<PrintStream> mock = mockConstruction(PrintStream.class)) {
+      Console sut = new Console();
+      PrintStream mockedPrintStream = mock.constructed().get(0);
+      Player mockedPlayer = mock(Player.class);
+
+      sut.presentScore(mockedPlayer);
+
+      verify(mockedPlayer).getName();
+      verify(mockedPlayer).getScore();
       verify(mockedPrintStream).println(anyString());
     }
   }
