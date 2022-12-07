@@ -21,6 +21,7 @@ public class Player {
       action = console.getAction();
       if (action == Action.PLAY) {
         diceGame.model.Player winner = game.newGame();
+        console.presentWinner(winner);
       }
     }
   }
