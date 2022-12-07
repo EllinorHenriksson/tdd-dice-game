@@ -16,6 +16,9 @@ public class Game {
   public Player newGame() {
     player.clearScore();
     computer.clearScore();
+    // OBS! Fortsätt testa koden nedanför
+    player.roll(dice1, dice2);
+    computer.roll(dice1, dice2);
     return null;
   }
 
