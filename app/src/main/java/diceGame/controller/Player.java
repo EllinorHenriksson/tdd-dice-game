@@ -29,6 +29,12 @@ public class Player implements Subscriber {
 
   @Override
   public void update(diceGame.model.Player player) {
+    try {
+      Thread.sleep(2000);
+    } catch (InterruptedException e) {
+      System.out.println("" + e);
+    }
 
+    console.presentScore(player);
   }
 }
