@@ -77,4 +77,19 @@ public class GameTest {
       assertSame(expected, actual);
     }
   }
+
+  @Test void newGameShouldReturnComputerIfItsScoreIsHigherThanPlayer() {
+    try (MockedConstruction<Player> mock = mockConstruction(Player.class)) {
+      Game sut = new Game();
+      Player mockedPlayer = mock.constructed().get(0);
+      Player mockedComputer = mock.constructed().get(1);
+      when(mockedPlayer.getScore()).thenReturn(1);
+      when(mockedComputer.getScore()).thenReturn(2);
+
+      Player expected = mockedComputer;
+      Player actual = sut.newGame();
+      
+      assertSame(expected, actual);
+    }
+  }
 }
