@@ -3,6 +3,8 @@ package diceGame.view;
 import java.io.PrintStream;
 import java.util.Scanner;
 
+import diceGame.model.Player;
+
 public class Console {
   private Scanner scan;
   private PrintStream print;
@@ -27,5 +29,8 @@ public class Console {
     }
 
     return Action.OTHER;
+  }
+
+  public void presentWinner(Player winner) {
   }
 }

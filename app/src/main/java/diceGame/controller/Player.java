@@ -20,7 +20,7 @@ public class Player {
       console.printMenu();
       action = console.getAction();
       if (action == Action.PLAY) {
-        game.newGame();
+        diceGame.model.Player winner = game.newGame();
       }
     }
   }
