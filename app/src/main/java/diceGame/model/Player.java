@@ -25,6 +25,7 @@ public class Player {
   }
 
   public void roll(Dice dice1, Dice dice2) {
-    
+    score += dice1.roll();
+    score += dice2.roll();
   }
 }
