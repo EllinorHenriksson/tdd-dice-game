@@ -1,6 +1,7 @@
 package diceGame.model;
 
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
 import org.mockito.MockedConstruction;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -44,6 +45,21 @@ public class GameTest {
       sut.newGame();
       verify(mockedPlayer).roll(any(Dice.class), any(Dice.class));
       verify(mockedComputer).roll(any(Dice.class), any(Dice.class));
+    }
+  }
+
+  @Test void newGameShouldReturnPlayerIfHerScoreIsHigherThanComputer() {
+    try (MockedConstruction<Player> mock = mockConstruction(Player.class)) {
+      Game sut = new Game();
+      Player mockedPlayer = mock.constructed().get(0);
+      Player mockedComputer = mock.constructed().get(1);
+      when(mockedPlayer.getScore()).thenReturn(2);
+      when(mockedComputer.getScore()).thenReturn(1);
+
+      Player expected = mockedPlayer;
+      Player actual = sut.newGame();
+      
+      assertSame(expected, actual);
     }
   }
 }
