@@ -16,16 +16,7 @@ public class Game {
   public Player newGame() {
     player.clearScore();
     computer.clearScore();
-    player.roll(dice1, dice2);
-    notify(player);
-    computer.roll(dice1, dice2);
-    notify(computer);
-
-    if (player.getScore() > computer.getScore()) {
-      return player;
-    } else {
-      return computer;
-    }
+    return null;
   }
 
   private void notify(Player player) {
