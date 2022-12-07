@@ -16,7 +16,6 @@ public class Game {
   public Player newGame() {
     player.clearScore();
     computer.clearScore();
-    // OBS! Fortsätt testa koden nedanför
     player.roll(dice1, dice2);
     notify(player);
     computer.roll(dice1, dice2);
@@ -25,10 +24,8 @@ public class Game {
     if (player.getScore() > computer.getScore()) {
       return player;
     } else {
-      
+      return computer;
     }
-
-    return null;
   }
 
   private void notify(Player player) {
