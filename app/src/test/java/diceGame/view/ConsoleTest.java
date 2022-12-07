@@ -3,6 +3,8 @@ package diceGame.view;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedConstruction;
 
+import diceGame.model.Player;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -83,6 +85,19 @@ public class ConsoleTest {
       Action actual = sut.getAction();
 
       assertEquals(expected, actual, "Should return " + expected + " for input 'q'");
+    }
+  }
+
+  @Test void presentWinnerShouldCallGetNameOnWinnerAntPrintlnOnPrintStream() {
+    try (MockedConstruction<PrintStream> mock = mockConstruction(PrintStream.class)) {
+      Console sut = new Console();
+      PrintStream mockedPrintStream = mock.constructed().get(0);
+      Player winner = mock(Player.class);
+      when(winner.getName()).thenReturn("Computer");
+      sut.presentWinner(winner);
+
+      verify(winner).getName();
+      verify(mockedPrintStream).println(anyString());
     }
   }
 }

@@ -32,5 +32,6 @@ public class Console {
   }
 
   public void presentWinner(Player winner) {
+
   }
 }
