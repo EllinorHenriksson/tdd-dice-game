@@ -22,6 +22,12 @@ public class Game {
     computer.roll(dice1, dice2);
     notify(computer);
 
+    if (player.getScore() > computer.getScore()) {
+      return player;
+    } else {
+      
+    }
+
     return null;
   }
 
