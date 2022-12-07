@@ -15,8 +15,8 @@ public class Console {
   }
   
   public void printMenu() {
-    String text = "\nDice Game\nPlay or quit (p/q)? ";
-    print.println(text);
+    String text = "\n*** Dice Game ***\nPlay or quit (p/q)? ";
+    print.print(text);
   }
 
   public Action getAction() {
@@ -32,12 +32,12 @@ public class Console {
   }
 
   public void presentWinner(Player winner) {
-    String text = winner.getName() + " wins!";
+    String text = "\n" + winner.getName() + " wins!";
     print.println(text);
   }
 
   public void presentScore(Player player) {
-    String text = player.getName() + " rolls " + player.getScore();
+    String text = "\n" + player.getName() + " rolls " + player.getScore();
     print.println(text);
   }
 }

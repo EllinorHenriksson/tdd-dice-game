@@ -10,6 +10,13 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 class PlayerTest {
+  @Test void constructorShouldCallSubscribeOnGameUsingThis() {
+    Console mockedConsole = mock(Console.class);
+    Game mockedGame = mock(Game.class);
+    Player sut = new Player(mockedConsole, mockedGame);
+    verify(mockedGame).subscribe(sut);
+  }
+
   @Test void playShouldCallPrintMenuOnConsole() {
     Console mockedConsole = mock(Console.class);
     when(mockedConsole.getAction()).thenReturn(Action.QUIT);

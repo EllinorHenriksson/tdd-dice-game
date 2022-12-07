@@ -30,12 +30,12 @@ public class ConsoleTest {
     }
   }
 
-  @Test void printMenuShouldCallPrintlnOnPrintStreamObject() {
+  @Test void printMenuShouldCallPrintOnPrintStreamObject() {
     try (MockedConstruction<PrintStream> mock = mockConstruction(PrintStream.class)) {
       Console sut = new Console();
       PrintStream mockedPrintStream = mock.constructed().get(0);
       sut.printMenu();
-      verify(mockedPrintStream).println(anyString());
+      verify(mockedPrintStream).print(anyString());
     }
   }
 
@@ -88,7 +88,7 @@ public class ConsoleTest {
     }
   }
 
-  @Test void presentWinnerShouldCallGetNameOnWinnerAntPrintlnOnPrintStream() {
+  @Test void presentWinnerShouldCallGetNameOnWinnerAndPrintlnOnPrintStream() {
     try (MockedConstruction<PrintStream> mock = mockConstruction(PrintStream.class)) {
       Console sut = new Console();
       PrintStream mockedPrintStream = mock.constructed().get(0);
