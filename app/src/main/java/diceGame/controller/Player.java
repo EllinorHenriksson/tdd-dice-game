@@ -12,6 +12,7 @@ public class Player implements Subscriber {
   public Player(Console console, Game game) {
     this.console = console;
     this.game = game;
+    game.subscribe(this);
   }
 
   public void play() {
