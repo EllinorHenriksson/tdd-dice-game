@@ -12,15 +12,19 @@ public class Player {
     this.name = name;
   }
 
+  public String getName() {
+    return name;
+  }
+
   public void clearScore() {
     score = 0;
   }
 
   public int getScore() {
-    return 0;
+    return score;
   }
 
   public void roll(Dice dice1, Dice dice2) {
-    
+
   }
 }

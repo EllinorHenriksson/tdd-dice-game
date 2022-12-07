@@ -18,4 +18,13 @@ public class PlayerTest {
   @Test void constructorShouldNotThrowOn3LetterName() {
     assertDoesNotThrow(() -> new Player("Abc"));
   }
+
+  @Test void rollShouldCallRollOnTheDiceSentAsArguments() {
+    Player sut = new Player("Player");
+    Dice dice1 = mock(Dice.class);
+    Dice dice2 = mock(Dice.class);
+    sut.roll(dice1, dice2);
+    verify(dice1).roll();
+    verify(dice2).roll();
+  }
 }
