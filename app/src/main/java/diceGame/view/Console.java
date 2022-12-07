@@ -37,6 +37,7 @@ public class Console {
   }
 
   public void presentScore(Player player) {
-
+    String text = player.getName() + " rolls " + player.getScore();
+    print.println(text);
   }
 }
