@@ -5,6 +5,10 @@ public class Player {
   private int score;
 
   public Player(String name) {
+    setName(name);
+  }
+
+  private void setName(String name) {
     if (name.length() < 3) {
       throw new IllegalArgumentException("Name must be at least 3 characters long.");
     }
