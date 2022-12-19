@@ -4,14 +4,15 @@ import java.util.Random;
 
 public class Dice {
 
-  private final int maxValue = 6;
+  private int maxFaceValue;
   private Random rand;
 
-  public Dice() {
+  public Dice(int maxFaceValue) {
+    this.maxFaceValue = maxFaceValue;
     rand = new Random();
   }
 
   public int roll() {
-    return rand.nextInt(maxValue) + 1;
+    return rand.nextInt(maxFaceValue) + 1;
   }
 }

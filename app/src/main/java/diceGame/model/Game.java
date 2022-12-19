@@ -12,8 +12,8 @@ public class Game {
   public Game() {
     player = new Player("Player");
     computer = new Player("Computer");
-    dice1 = new Dice();
-    dice2 = new Dice();
+    dice1 = new Dice(6);
+    dice2 = new Dice(6);
     subscribers = new ArrayList<>();
   }
 

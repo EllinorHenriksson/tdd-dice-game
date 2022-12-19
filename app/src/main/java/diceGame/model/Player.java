@@ -12,7 +12,7 @@ public class Player {
     setName(name);
   }
 
-  public void setName(String name) {
+  private void setName(String name) {
     if (name.length() < minLength || name.length() > maxLength) {
       throw new IllegalArgumentException("Name must be 3-30 characters long.");
     }
