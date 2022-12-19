@@ -18,7 +18,7 @@ public class PlayerTest {
     assertDoesNotThrow(() -> new Player("Abc"));
   }
 
-  @Test void constructorShouldThrow31LetterName() {
+  @Test void constructorShouldThrowOn31LetterName() {
     StringBuffer buffer = new StringBuffer();
     for (int i = 0; i < 31; i++) {
       buffer.append("a");
@@ -38,6 +38,12 @@ public class PlayerTest {
     String name = buffer.toString();
 
     assertDoesNotThrow(() -> new Player(name));
+  }
+
+  @Test void constructorShouldThrowOnNonLetterCharacter() {
+    String name = "ab3";
+
+    assertThrows(IllegalArgumentException.class, () -> new Player(name));
   }
 
   @Test void rollShouldCallRollOnTheDiceSentAsArguments() {
