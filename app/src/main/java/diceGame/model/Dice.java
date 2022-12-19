@@ -8,8 +8,16 @@ public class Dice {
   private Random rand;
 
   public Dice(int maxFaceValue) {
-    this.maxFaceValue = maxFaceValue;
+    setMaxFaceValue(maxFaceValue);
     rand = new Random();
+  }
+
+  private void setMaxFaceValue(int maxFaceValue) {
+    if (maxFaceValue <= 0) {
+      throw new IllegalArgumentException("Max face value must be a positive integer.");
+    }
+
+    this.maxFaceValue = maxFaceValue;
   }
 
   public int roll() {
