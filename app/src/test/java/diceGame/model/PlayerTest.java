@@ -18,6 +18,28 @@ public class PlayerTest {
     assertDoesNotThrow(() -> new Player("Abc"));
   }
 
+  @Test void constructorShouldThrow31LetterName() {
+    StringBuffer buffer = new StringBuffer();
+    for (int i = 0; i < 31; i++) {
+      buffer.append("a");
+    }
+
+    String name = buffer.toString();
+
+    assertThrows(IllegalArgumentException.class, () -> new Player(name));
+  }
+
+  @Test void constructorShouldNotThrowOn30LetterName() {
+    StringBuffer buffer = new StringBuffer();
+    for (int i = 0; i < 30; i++) {
+      buffer.append("a");
+    }
+
+    String name = buffer.toString();
+
+    assertDoesNotThrow(() -> new Player(name));
+  }
+
   @Test void rollShouldCallRollOnTheDiceSentAsArguments() {
     Player sut = new Player("Player");
     Dice dice1 = mock(Dice.class);
