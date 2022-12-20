@@ -95,4 +95,17 @@ public class GameTest {
       assertSame(expected, actual);
     }
   }
+
+  @Test void subscribeShouldNotThrowOnSingleSubscriber() {
+    Game sut = new Game();
+    Subscriber subscriberMock = mock(diceGame.controller.Player.class);
+    assertDoesNotThrow(() -> sut.subscribe(subscriberMock));
+  }
+
+  @Test void subscribeShouldThrowOnDuplicateSubscriber() {
+    Game sut = new Game();
+    Subscriber subscriberMock = mock(diceGame.controller.Player.class);
+    sut.subscribe(subscriberMock);
+    assertThrows(IllegalArgumentException.class, () -> sut.subscribe(subscriberMock));
+  }
 }
