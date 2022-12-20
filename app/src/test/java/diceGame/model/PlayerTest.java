@@ -66,4 +66,14 @@ public class PlayerTest {
     int actual = sut.getScore();
     assertEquals(expected, actual);
   }
+
+  @Test void clearScoreShouldSetScoreToZero() {
+    Player sut = new Player("Player");
+    sut.clearScore();
+
+    int expected = 0;
+    int actual = sut.getScore();
+
+    assertEquals(expected, actual);
+  }
 }
