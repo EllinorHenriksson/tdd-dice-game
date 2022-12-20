@@ -108,4 +108,17 @@ public class GameTest {
     sut.subscribe(subscriberMock);
     assertThrows(IllegalArgumentException.class, () -> sut.subscribe(subscriberMock));
   }
+
+  @Test void unsubscribeShouldNotThrowOnExistingSubscriber() {
+    Game sut = new Game();
+    Subscriber subscriberMock = mock(diceGame.controller.Player.class);
+    sut.subscribe(subscriberMock);
+    assertDoesNotThrow(() -> sut.unsubscribe(subscriberMock));
+  }
+
+  @Test void subscribeShouldThrowOnNonExistingSubscriber() {
+    Game sut = new Game();
+    Subscriber subscriberMock = mock(diceGame.controller.Player.class);
+    assertThrows(IllegalArgumentException.class, () -> sut.unsubscribe(subscriberMock));
+  }
 }
