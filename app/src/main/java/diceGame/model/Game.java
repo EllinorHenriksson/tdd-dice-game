@@ -18,6 +18,9 @@ public class Game {
   }
 
   public void subscribe(Subscriber subscriber) {
+    if (subscribers.contains(subscriber)) {
+      throw new IllegalArgumentException("Subscriber already added.");
+    }
     subscribers.add(subscriber);
   }
 
