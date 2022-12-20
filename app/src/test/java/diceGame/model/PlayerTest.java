@@ -46,8 +46,14 @@ public class PlayerTest {
     assertThrows(IllegalArgumentException.class, () -> new Player(name));
   }
 
+  @Test void getNameShouldReturnName() {
+    String name = "Ellen";
+    Player sut = new Player(name);
+    assertEquals(name, sut.getName());
+  }
+
   @Test void rollShouldCallRollOnTheDiceSentAsArguments() {
-    Player sut = new Player("Player");
+    Player sut = new Player("Ellen");
     Dice dice1 = mock(Dice.class);
     Dice dice2 = mock(Dice.class);
     sut.roll(dice1, dice2);
@@ -56,7 +62,7 @@ public class PlayerTest {
   }
 
   @Test void rollShouldAddFaceValuesOfDicesToScore() {
-    Player sut = new Player("Player");
+    Player sut = new Player("Ellen");
     Dice dice1 = mock(Dice.class);
     Dice dice2 = mock(Dice.class);
     when(dice1.roll()).thenReturn(1);
@@ -68,7 +74,7 @@ public class PlayerTest {
   }
 
   @Test void clearScoreShouldSetScoreToZero() {
-    Player sut = new Player("Player");
+    Player sut = new Player("Ellen");
     sut.clearScore();
 
     int expected = 0;
