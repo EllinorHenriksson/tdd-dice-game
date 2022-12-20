@@ -1,14 +1,10 @@
 package diceGame.model;
 
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentCaptor;
 import org.mockito.MockedConstruction;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class GameTest {
   @Test void constructorShouldCreateTwoPlayerObjects() {
@@ -26,6 +22,45 @@ public class GameTest {
       int expeced = 2;
       int actual = mock.constructed().size();
       assertEquals(expeced, actual, "The number of instantiated Dice objects should be " + expeced);
+    }
+  }
+
+  @Test void subscribeShouldNotThrowOnSingleSubscriber() {
+    Game sut = new Game();
+    Subscriber mockedSubscriber = mock(diceGame.controller.Player.class);
+    assertDoesNotThrow(() -> sut.subscribe(mockedSubscriber));
+  }
+
+  @Test void subscribeShouldThrowOnDuplicateSubscriber() {
+    Game sut = new Game();
+    Subscriber mockedSubscriber = mock(diceGame.controller.Player.class);
+    sut.subscribe(mockedSubscriber);
+    assertThrows(IllegalArgumentException.class, () -> sut.subscribe(mockedSubscriber));
+  }
+
+  @Test void unsubscribeShouldNotThrowOnExistingSubscriber() {
+    Game sut = new Game();
+    Subscriber mockedSubscriber = mock(diceGame.controller.Player.class);
+    sut.subscribe(mockedSubscriber);
+    assertDoesNotThrow(() -> sut.unsubscribe(mockedSubscriber));
+  }
+
+  @Test void unsubscribeShouldThrowOnNonExistingSubscriber() {
+    Game sut = new Game();
+    Subscriber mockedSubscriber = mock(diceGame.controller.Player.class);
+    assertThrows(IllegalArgumentException.class, () -> sut.unsubscribe(mockedSubscriber));
+  }
+
+  @Test void newGameShouldNotifySubscribersWithPlayerAndComputer() {
+    try (MockedConstruction<Player> mock = mockConstruction(Player.class)) { 
+      Game sut = new Game();
+      Player mockedPlayer = mock.constructed().get(0);
+      Player mockedComputer = mock.constructed().get(1);
+      Subscriber mockedSubscriber = mock(diceGame.controller.Player.class);
+      sut.subscribe(mockedSubscriber);
+      sut.newGame();
+      verify(mockedSubscriber).update(mockedPlayer);
+      verify(mockedSubscriber).update(mockedComputer);
     }
   }
 
@@ -94,31 +129,5 @@ public class GameTest {
       
       assertSame(expected, actual);
     }
-  }
-
-  @Test void subscribeShouldNotThrowOnSingleSubscriber() {
-    Game sut = new Game();
-    Subscriber subscriberMock = mock(diceGame.controller.Player.class);
-    assertDoesNotThrow(() -> sut.subscribe(subscriberMock));
-  }
-
-  @Test void subscribeShouldThrowOnDuplicateSubscriber() {
-    Game sut = new Game();
-    Subscriber subscriberMock = mock(diceGame.controller.Player.class);
-    sut.subscribe(subscriberMock);
-    assertThrows(IllegalArgumentException.class, () -> sut.subscribe(subscriberMock));
-  }
-
-  @Test void unsubscribeShouldNotThrowOnExistingSubscriber() {
-    Game sut = new Game();
-    Subscriber subscriberMock = mock(diceGame.controller.Player.class);
-    sut.subscribe(subscriberMock);
-    assertDoesNotThrow(() -> sut.unsubscribe(subscriberMock));
-  }
-
-  @Test void subscribeShouldThrowOnNonExistingSubscriber() {
-    Game sut = new Game();
-    Subscriber subscriberMock = mock(diceGame.controller.Player.class);
-    assertThrows(IllegalArgumentException.class, () -> sut.unsubscribe(subscriberMock));
   }
 }
