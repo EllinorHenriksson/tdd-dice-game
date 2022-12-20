@@ -25,6 +25,9 @@ public class Game {
   }
 
   public void unsubscribe(Subscriber subscriber) {
+    if (!subscribers.contains(subscriber)) {
+      throw new IllegalArgumentException("Subscriber does not exist.");
+    }
     subscribers.remove(subscriber);
   }
 
